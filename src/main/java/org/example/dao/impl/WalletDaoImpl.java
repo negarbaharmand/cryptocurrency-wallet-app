@@ -2,17 +2,21 @@ package org.example.dao.impl;
 
 import org.example.dao.WalletDao;
 import org.example.model.Wallet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
+//We make this class a bean in IOC container by writing @Container
+@Component
 public class WalletDaoImpl implements WalletDao {
 
     private List<Wallet> storage;
 
     public WalletDaoImpl() {
-        System.out.printf("Wallet list is initialized and ready to use...");
+        System.out.println("Wallet list is initialized and ready to use...");
         this.storage = new ArrayList<>();
     }
 

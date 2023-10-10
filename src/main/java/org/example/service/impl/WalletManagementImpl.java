@@ -5,13 +5,20 @@ import org.example.exception.WalletNotFoundException;
 import org.example.exception.WalletValidationException;
 import org.example.model.Wallet;
 import org.example.service.WalletManagement;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+
+//We make this class a bean in IOC container by writing @Container
+@Component
 public class WalletManagementImpl implements WalletManagement {
 
     private WalletDao walletDao;
 
+    // @Autowired is responsible for initialize WalletManagementImpl object
+    @Autowired
     public WalletManagementImpl(WalletDao walletDao) {
         this.walletDao = walletDao;
     }
@@ -28,6 +35,6 @@ public class WalletManagementImpl implements WalletManagement {
     public Wallet getById(String id) {
         Optional<Wallet> optionalWallet = walletDao.findWallet(id);
         if (optionalWallet.isEmpty()) throw new WalletNotFoundException("Wallet was not found.");
-        return null;
+        return optionalWallet.get();
     }
 }
