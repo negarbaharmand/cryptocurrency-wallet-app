@@ -7,14 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class wallet {
+public class Wallet {
 
     //Fields:
     private final String id;
     private final String walletName;
     private final Map<CryptoCurrency, BigDecimal> cryptoCurrencies;
 
-    public wallet(String walletName) {
+    public Wallet(String walletName) {
         this.id = UUID.randomUUID().toString();
         this.walletName = walletName;
         this.cryptoCurrencies = new HashMap<>();
